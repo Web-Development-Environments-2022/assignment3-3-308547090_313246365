@@ -1,18 +1,73 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link :to="{ name: 'main' }">Vue Recipes</router-link>|
-      <router-link :to="{ name: 'search' }">Search</router-link>|
-      {{ !$root.store.username }}
-      <span v-if="!$root.store.username">
-        Guest:
-        <router-link :to="{ name: 'register' }">Register</router-link>|
-        <router-link :to="{ name: 'login' }">Login</router-link>|
+        
+        <div>
+  <b-navbar toggleable="lg" type="dark" variant="info">
+    
+    <b-navbar-brand href="#">Site Name!</b-navbar-brand>
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+    <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav>
+         <b-nav-item>
+             <router-link :to="{ name: 'main' }">Home</router-link>
+         </b-nav-item>
+          <b-nav-item>
+             <router-link :to="{ name: 'about' }">About</router-link>
+         </b-nav-item>
+         <b-nav-item>
+             <router-link :to="{ name: 'search' }">Search</router-link>
+         </b-nav-item>
+
+        <!-- FOR CONNECTED USER -->
+        <b-nav-item-dropdown text="Personal Area" right>
+          <b-dropdown-item>  
+            <router-link  :to="{ name: 'favorites' }">My Favourite Recipes </router-link>
+          </b-dropdown-item>
+          <b-dropdown-item >
+            <router-link  :to="{ name: 'personal' }">
+            My Recipes
+             </router-link>
+            </b-dropdown-item>
+            <b-dropdown-item >
+            <router-link  :to="{ name: 'family' }">
+            My Family Recipes
+            </router-link>
+            </b-dropdown-item>
+        </b-nav-item-dropdown>
+        <b-nav-item href="#">Create Recipe</b-nav-item>     
+      
+      </b-navbar-nav>
+
+      <!-- RIGHT MENU -->
+      <b-navbar-nav class="ml-auto">
+     
+      <span  v-if="!$root.store.username">
+        Hello Guest! 
+    
+        <router-link  :to="{ name: 'register' }">Register </router-link>
+
+
+        <router-link  :to="{ name: 'login' }">Login</router-link>
+
       </span>
-      <span v-else>
-        {{ $root.store.username }}: <button @click="Logout">Logout</button>|
-      </span>
+      <b-nav-item v-else>
+        {{ $root.store.username }}: <button @click="Logout">Logout</button> 
+      </b-nav-item>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
+</div>
+
+
+
+     
+      
+
     </div>
+
+
     <router-view />
   </div>
 </template>
@@ -54,6 +109,6 @@ export default {
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #b942a9;
 }
 </style>

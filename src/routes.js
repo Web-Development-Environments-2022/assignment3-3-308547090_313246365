@@ -8,25 +8,50 @@ const routes = [
     component: Main,
   },
   {
-    path: "/register",
+    path: "/Register",
     name: "register",
     component: () => import("./pages/RegisterPage"),
   },
   {
-    path: "/login",
+    path: "/Login",
     name: "login",
     component: () => import("./pages/LoginPage"),
   },
   {
-    path: "/search",
+    path: "/searchRecipe",
     name: "search",
     component: () => import("./pages/SearchPage"),
   },
   {
-    path: "/recipe/:recipeId",
+    path: "/recipe",
     name: "recipe",
     component: () => import("./pages/RecipeViewPage"),
   },
+
+  {
+    path: "/recipe/myRecipes",
+    name: "personal",
+    component: () => import("./pages/PersonalPage"),
+  },  
+  
+  {
+    path: "/favorites",
+    name: "favorites",
+    component: () => import("./pages/FavouritePage"),
+  },
+
+  {
+    path: "/familyRecipes",
+    name: "family",
+    component: () => import("./pages/MyFamilyPage"),
+  },
+
+  {
+    path: "/about",
+    name: "about",
+    component: () => import("./pages/About"),
+  },
+
   {
     path: "*",
     name: "notFound",

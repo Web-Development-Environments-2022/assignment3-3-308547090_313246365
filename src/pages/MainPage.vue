@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+
     <h1 class="title">Main Page</h1>
     <RecipePreviewList v-if="random_recipes.length" :recipes_list = "random_recipes" class="RandomRecipes center" />
     <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link>
@@ -34,6 +35,8 @@ export default {
   },
 
   created() {
+
+  //===== AXIOS ====
   //   this.axios.get(
   //   //this.$root.store.server_domain + "/recipes/random",
   //   process.env.VUE_APP_ROOT_API+ "/recipes/random",
