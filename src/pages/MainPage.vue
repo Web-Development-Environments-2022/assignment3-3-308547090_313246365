@@ -1,10 +1,14 @@
 <template>
   <div class="container">
 
-    <h1 class="title">Main Page</h1>
+    <h1 class="title">Random Recipes:</h1>
     <RecipePreviewList v-if="random_recipes.length" :recipes_list = "random_recipes" class="RandomRecipes center" />
+
+     <h1 class="title">Last viewed:</h1>
     <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link>
-    {{ !$root.store.username }}
+    <!-- {{ !$root.store.username }} -->
+    
+   
     <RecipePreviewList
         
       :class="{
@@ -14,11 +18,11 @@
       }"
       disabled
     ></RecipePreviewList>
-    <!-- <div
-      style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
-    >
-      Centeredasdasdad
-    </div>-->
+     <v-else>
+        <RecipePreviewList v-if= "random_recipes.length" :recipes_list = "random_recipes" class="RandomRecipes center" />
+      </v-else>
+  
+
   </div>
 </template>
 

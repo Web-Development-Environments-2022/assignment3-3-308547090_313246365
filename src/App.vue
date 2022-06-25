@@ -34,6 +34,7 @@
             <router-link  :to="{ name: 'family' }">
             My Family Recipes
             </router-link>
+
             </b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item href="#">Create Recipe</b-nav-item>     
@@ -53,7 +54,7 @@
 
       </span>
       <b-nav-item v-else>
-        {{ $root.store.username }}: <button @click="Logout">Logout</button> 
+        {{ $root.store.username }}: <span @click="Logout">Logout</span> 
       </b-nav-item>
       </b-navbar-nav>
     </b-collapse>
