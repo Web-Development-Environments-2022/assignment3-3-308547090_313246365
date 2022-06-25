@@ -18,10 +18,10 @@
         <a v-if="recipe.vegan"> Vegan </a><a v-if="recipe.vegetarian"> Vegetarian </a><a v-if="recipe.glutenFree"> Gluten Free </a>
       </b-card-text>
       <b-button variant="primary" style="text-align:center;">
-        <a style="color: black; text-align:center;"
+        <router-link style="color: black; text-align:center;"
         :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
         class="recipe-preview"
-        >Make this</a>
+        >Make this</router-link>
       </b-button>
     </b-card>
   </div>
