@@ -4,7 +4,7 @@
     <h1 class="title">Main Page</h1>
     <RecipePreviewList v-if="random_recipes.length" :recipes_list = "random_recipes" class="RandomRecipes center" />
     <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link>
-    {{ !$root.store.username }}
+    <!-- {{ !$root.store.username }} -->
     <RecipePreviewList
         
       :class="{

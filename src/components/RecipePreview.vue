@@ -1,21 +1,30 @@
 <template>
-  <router-link
-    :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
-    class="recipe-preview"
-  >
-    <div class="recipe-body">
-      <img v-if="image_load" :src="recipe.image" class="recipe-image" />
-    </div>
-    <div class="recipe-footer">
-      <div :title="recipe.title" class="recipe-title">
-        {{ recipe.title }}
-      </div>
-      <ul class="recipe-overview">
-        <li>{{ recipe.readyInMinutes }} minutes</li>
-        <li>{{ recipe.aggregateLikes }} likes</li>
-      </ul>
-    </div>
-  </router-link>
+  <div>
+    <b-card
+      :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
+      :title="recipe.title"
+      :img-src="recipe.image"
+      img-alt="Image"
+      img-top
+      tag="card"
+      style="max-width: 20rem;"
+      class="mb-2"
+    >
+      <b-card-text>
+        Likes: {{ recipe.popularity }} <br>
+        Time to make in minutes: {{ recipe.readyInMinutes }}
+      </b-card-text>
+      <b-card-text>
+        <a v-if="recipe.vegan"> Vegan </a><a v-if="recipe.vegetarian"> Vegetarian </a><a v-if="recipe.glutenFree"> Gluten Free </a>
+      </b-card-text>
+      <b-button variant="primary" style="text-align:center;">
+        <a style="color: black; text-align:center;"
+        :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
+        class="recipe-preview"
+        >Make this</a>
+      </b-button>
+    </b-card>
+  </div>
 </template>
 
 <script>
