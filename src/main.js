@@ -2,7 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
-import VueCookies from 'vue-cookies'
+import VueCookies from 'vue-cookies';
 
 import routes from "./routes";
 import VueRouter from "vue-router";
@@ -18,6 +18,7 @@ import {
   FormGroupPlugin,
   FormPlugin,
   FormInputPlugin,
+  FormCheckboxPlugin,
   ButtonPlugin,
   CardPlugin,
   NavbarPlugin,
@@ -25,11 +26,13 @@ import {
   AlertPlugin,
   ToastPlugin,
   LayoutPlugin,
+  ModalPlugin,
 } from "bootstrap-vue";
 [
   FormGroupPlugin,
   FormPlugin,
   FormInputPlugin,
+  FormCheckboxPlugin,
   ButtonPlugin,
   CardPlugin,
   NavbarPlugin,
@@ -37,6 +40,7 @@ import {
   AlertPlugin,
   ToastPlugin,
   LayoutPlugin,
+  ModalPlugin,
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 
