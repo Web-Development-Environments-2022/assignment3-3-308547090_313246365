@@ -8,7 +8,7 @@
         label="Username:"
         label-for="username"
       >
-        <b-form-input
+        <b-form-input class="bforminp"
           id="username"
           v-model="$v.form.username.$model"
           type="text"
@@ -90,17 +90,17 @@
         </b-form-invalid-feedback>
       </b-form-group>
 
-      <b-button type="reset" variant="danger">Reset</b-button>
+      <b-button type="reset" variant="danger" style="height:60px;width:69px;background-color:rgb(224, 113, 113)">Reset</b-button>
       <b-button
         type="submit"
         variant="primary"
-        style="width:250px;"
-        class="ml-5 w-75"
-        >Register</b-button
+       style="text-align:center; background-color: #efc58b;  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;border-color:black;border:557px;height:60px; font-size:25px;"
+        class="ml-5 w-75" 
+        >Register!</b-button
       >
       <div class="mt-2">
         You have an account already?
-        <router-link to="login"> Log in here</router-link>
+        <router-link to="login" > Log in here</router-link>
       </div>
     </b-form>
     <b-alert
@@ -227,5 +227,10 @@ export default {
 <style lang="scss" scoped>
 .container {
   max-width: 500px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   font-size: 20px;
+   
 }
+
+
 </style>

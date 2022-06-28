@@ -1,15 +1,16 @@
 <template>
   <div class="container">
-    <h1 class="title">Login</h1>
+    <h1 class="title" >Login</h1>
     <b-form @submit.prevent="onLogin">
       <b-form-group
         id="input-group-Username"
+        style="padding:0px.;"
         label-cols-sm="3"
         label="Username:"
         label-for="Username"
       >
         <b-form-input
-          id="Username"
+          id="Username" 
           v-model="$v.form.username.$model"
           type="text"
           :state="validateState('username')"
@@ -39,8 +40,7 @@
       <b-button
         type="submit"
         variant="primary"
-        style="width:100px;display:block;"
-        class="mx-auto w-100"
+        class="mx-auto w-100" style="width:50px; text-align:center; background-color: #efc58b;  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;border-color:black;border:557px;height:60px; font-size:25px;"
         >Login</b-button
       >
       <div class="mt-2">
@@ -132,5 +132,10 @@ export default {
 <style lang="scss" scoped>
 .container {
   max-width: 400px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+   font-size: 20px;
+   padding-left:20px 20px 20px 20px;
+  
 }
 </style>

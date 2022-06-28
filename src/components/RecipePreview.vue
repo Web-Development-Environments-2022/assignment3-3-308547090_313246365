@@ -1,27 +1,37 @@
 <template>
   <div>
-    <b-card
+    <b-card id="card"
       :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
       :title="recipe.title"
       :img-src="recipe.image"
       img-alt="Image"
       img-top
       tag="card"
-      style="max-width: 20rem;"
+      style="max-width: 20rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
       class="mb-2"
     >
-      <b-card-text>
+      <b-card-text class="text">
         Likes: {{ recipe.popularity }} <br>
         Time to make in minutes: {{ recipe.readyInMinutes }}
       </b-card-text>
       <b-card-text>
-        <a v-if="recipe.vegan"> Vegan </a><a v-if="recipe.vegetarian"> Vegetarian </a><a v-if="recipe.glutenFree"> Gluten Free </a>
+        <a v-if="recipe.vegan"> 
+          <img src="../assets/vegan.png" style="width: 30px; height:30px;">
+          
+          Vegan </a>
+          <a v-if="recipe.vegetarian"> 
+            <img src="../assets/vegeterian.png" style="width: 30px; height:30px;">
+            Vegetarian </a><a v-if="recipe.glutenFree"> 
+              
+              <img src="../assets/no-wheat.png" style="width: 30px; height:30px;">
+              Gluten Free </a>
       </b-card-text>
-      <b-button variant="primary" style="text-align:center;">
-        <router-link style="color: black; text-align:center;"
+      <b-button variant="primary" style="text-align:center; background-color: #efc58b;  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;border-color:black;border:557px;">
+        <router-link style="color: #2c3e50; text-align:center;"
         :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
-        class="recipe-preview"
-        >Make this</router-link>
+        class="recipe-preview" 
+        >Make this!
+        </router-link>
       </b-button>
     </b-card>
   </div>
@@ -73,10 +83,15 @@ export default {
 </script>
 
 <style scoped>
+
+
+#card{
+  box-shadow: 10px 10px lightblue;
+}
 .recipe-preview {
   display: inline-block;
   width: 90%;
-  height: 100%;
+  height: 105%;
   position: relative;
   margin: 10px 10px;
 }
@@ -97,6 +112,7 @@ export default {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
+
 }
 
 .recipe-preview .recipe-footer {
@@ -146,5 +162,10 @@ export default {
   width: 90px;
   display: table-cell;
   text-align: center;
+}
+
+.text{
+
+    font-size:20px;
 }
 </style>

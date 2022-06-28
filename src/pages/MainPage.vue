@@ -1,9 +1,9 @@
 <template>
   <div class="container">
 
-    <h1 class="title">Random Recipes:</h1>
+    <h1 class="title" style= "font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold;" >Random Recipes:</h1>
     <RecipePreviewList v-if="random_recipes.length" :recipes_list = "random_recipes" class="RandomRecipes center" />
-    <b-button block variant="outline-primary" @click="GetNewRandom">See more</b-button><br>
+    <b-button block variant="outline-primary" id=#see_more_btn @click="GetNewRandom">See more</b-button><br>
     <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
     <!-- <RecipePreviewList v-if="$root.store.username"
       :class="{
@@ -14,7 +14,7 @@
       disabled
       > -->
       <div>
-        <h1 class="title" v-if="$root.store.username">Last viewed:</h1>
+        <h1 class="title" v-if="$root.store.username" style= "font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold;" >Last viewed:</h1>
         <RecipePreviewList v-if= "random_recipes.length && $root.store.username" :recipes_list = "random_recipes" class="RandomRecipes center"></RecipePreviewList>
       </div>
       <!-- </RecipePreviewList> -->
@@ -52,7 +52,7 @@ export default {
         "id": 664025,
         "title": "Turkey Enchilada Bake",
         "readyInMinutes": 45,
-        "image": "https://spoonacular.com/recipeImages/661121-556x370.jpg",
+            "image": "https://spoonacular.com/recipeImages/661121-556x370.jpg",
         "popularity": 31,
         "vegan": false,
         "vegetarian": false,
@@ -157,5 +157,16 @@ export default {
 ::v-deep .blur .recipe-preview {
   pointer-events: none;
   cursor: default;
+
 }
+
+
+.title{
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding:30px;
+
+}
+
+
 </style>

@@ -128,13 +128,13 @@
         </b-card> -->
       </b-modal>
       <!-- RIGHT MENU -->
-      <b-navbar-nav class="ml-auto">
-        <span  v-if="!$root.store.username">
+      <b-navbar-nav class="ml-auto" id ="guest_name">
+        <span  style="color:#efc58b;" v-if="!$root.store.username" >
           Hello Guest! 
           <router-link  :to="{ name: 'register' }">Register </router-link>
           <router-link  :to="{ name: 'login' }">Login</router-link>
         </span>
-        <b-nav-item v-else>
+        <b-nav-item v-else >
           <span>{{ $root.store.username }}:</span> <span @click="Logout">Logout</span> 
         </b-nav-item>
         </b-navbar-nav>
@@ -201,26 +201,45 @@ export default {
 @import "@/scss/form-style.scss";
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   min-height: 100vh;
+  background: #f5e3c9;
 }
 
 #nav {
-  padding: 30px;
+height:100px;
 }
 
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 25px;
+
 }
 
 #nav a.router-link-exact-active {
-  color: white;
+  color: #efc58b;
+}
+
+#guest_name{
+color: #efc58b;
+
 }
 .v-b-modal.create.large-text-box{
   height: 300px;
+  
+}
+
+#guest_name{
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 27px;
+  color: #efc58b;
+
 }
 </style>
