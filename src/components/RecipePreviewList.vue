@@ -21,10 +21,10 @@ export default {
   },
   props: {
     // title: {
-      // type: String,
+    //   type: String,
     //   required: true
     // }
-    recipes_list: []
+    recipes_list: [],
 
   },
   data() {
