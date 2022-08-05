@@ -14,7 +14,7 @@
       disabled
       > -->
       <div>
-        <h1 class="title" v-if="$root.store.username" style= "font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold;" >Last viewed:</h1>
+        <h1 class="title" v-if="$root.store.username">Last viewed:</h1>
         <RecipePreviewList v-if= "random_recipes.length && $root.store.username" :recipes_list = "random_recipes" class="RandomRecipes center"></RecipePreviewList>
       </div>
       <!-- </RecipePreviewList> -->
@@ -149,6 +149,7 @@ export default {
 <style lang="scss" scoped>
 .RandomRecipes {
   margin: 10px 0 10px;
+  
 }
 .blur {
   -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */

@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
+axios.defaults.withCredentials = true;
 import VueCookies from 'vue-cookies';
 
 import routes from "./routes";
@@ -73,12 +74,21 @@ Vue.config.productionTip = false;
 
 const shared_data = {
   username: localStorage.username,
+  last_search:[],
+  updateSearch(last_search1){
+    localStorage.setItem("last_search", last_search1);
+    //sessionStorage.setItem("last_search", last_search1);
+    this.last_search = last_search1;
+    console.log("last search was updated");
+  },
   login(username) {
     localStorage.setItem("username", username);
     this.username = username;
     console.log("login", this.username);
   },
   logout() {
+    localStorage.setItem("last_search", []);
+    this.last_search = [];
     console.log("logout");
     localStorage.removeItem("username");
     this.username = undefined;

@@ -87,13 +87,16 @@ export default {
 
 #card{
   box-shadow: 10px 10px lightblue;
+  margin-left: 20px;
+  margin-bottom: 100px;
+  margin-top: 100px;
 }
 .recipe-preview {
   display: inline-block;
   width: 90%;
   height: 105%;
-  position: relative;
-  margin: 10px 10px;
+
+  
 }
 .recipe-preview > .recipe-body {
   width: 100%;
@@ -102,8 +105,8 @@ export default {
 }
 
 .recipe-preview .recipe-body .recipe-image {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 500px;
+  margin-right: 500px;
   margin-top: auto;
   margin-bottom: auto;
   display: block;
