@@ -53,7 +53,7 @@ export default {
         "id": 664025,
         "title": "Turkey Enchilada Bake",
         "readyInMinutes": 45,
-            "image": "https://spoonacular.com/recipeImages/661121-556x370.jpg",
+        "image": "https://spoonacular.com/recipeImages/661121-556x370.jpg",
         "popularity": 31,
         "vegan": false,
         "vegetarian": false,
