@@ -170,6 +170,7 @@ import {
 
 export default {
   name: "App",
+
   data() {
       return {
         form: {
@@ -306,6 +307,7 @@ height:100px;
 
 #nav a.router-link-exact-active {
   color: #efc58b;
+  
 }
 
 #guest_name{

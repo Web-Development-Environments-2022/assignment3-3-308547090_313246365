@@ -5,9 +5,12 @@
       <slot></slot>
     </h3> -->
     <b-row>
-      <b-col v-for="r in recipes_list" :key="r.id">
+    <b-row v-for="r in recipes_list" :key="r.id">
+      <b-col >
         <RecipePreview class="recipePreview" :recipe="r" />
       </b-col>
+      <br>
+    </b-row>
     </b-row>
   </b-container>
 </template>
@@ -55,11 +58,15 @@ export default {
   //     }
   //   }
   // }
+
+
 };
 </script>
 
 <style lang="scss" scoped>
 .container {
   min-height: 400px;
+ 
+ 
 }
 </style>
