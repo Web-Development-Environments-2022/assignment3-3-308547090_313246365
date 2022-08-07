@@ -33,27 +33,37 @@
         >Make this!
         </router-link>
       </b-button>
+      <b-row>
+      <div  id="star1" class= "star"   v-show= !(recipe.isFavorite&flag) @click="MarkAsFavourite" style="font-size:300%;color:grey; margin-left:242px;hover:">&starf;</div>
+      <div id="star2" class= "star"  v-show= (recipe.isFavorite||flag) style="font-size:300%;color:orange; margin-left:242px;hover:">&starf;</div>
+
+       </b-row>
+
+       
     </b-card>
   </div>
 </template>
 
 <script>
 export default {
-  mounted() {
-    this.axios.get(this.recipe.image).then((i) => {
-      this.image_load = true;
-    });
-  },
+ // mounted() {
+    // this.axios.get(this.recipe.image).then((i) => {
+    //   this.image_load = true;
+    // });
+ // },
   data() {
     return {
-      image_load: false
-    };
+      //image_load: false,
+      flag: false
+    }
   },
   props: {
     recipe: {
       type: Object,
       required: true
+    
     }
+     },
 
     // id: {
     //   type: Number,
@@ -78,6 +88,42 @@ export default {
     //     return undefined;
     //   }
     // }
+ 
+  methods:{
+
+
+    async MarkAsFavourite(){
+        console.log("=== flag is true 0 =====");
+      //== send response ==
+      try {
+      
+      //====== &  =====
+      //if recipe is not in user favourites and he is logged in -> mark as favorite 
+      //if(this.recipe.isFavorite==false & $root.store.username.length){
+        this.flag=true;
+        console.log("=== flag is true 1 =====");
+        console.log(this.recipe.id);
+
+      //}
+           
+        const response = await this.axios.post(
+   
+           process.env.VUE_APP_ROOT_API+"/users/favorites",
+            {
+              "recipeId": this.recipe.id
+            }
+        );
+           //document.getElementById("star1").style.color=yellow;
+          console.log("mark as fave is good")
+          console.log(response.data);
+
+         
+
+      } catch (err) {
+        console.log(err.response);
+        this.form.submitError = err.response.data.message;
+      }
+    }
   }
 };
 </script>
@@ -122,6 +168,7 @@ export default {
   width: 100%;
   height: 50%;
   overflow: hidden;
+  
 }
 
 .recipe-preview .recipe-footer .recipe-title {
@@ -170,5 +217,10 @@ export default {
 .text{
 
     font-size:20px;
+}
+
+.star:hover{
+  cursor: pointer;
+ 
 }
 </style>

@@ -75,6 +75,14 @@ Vue.config.productionTip = false;
 const shared_data = {
   username: localStorage.username,
   last_search:[],
+  // last_watched:[],
+
+  // updateWatch(recipe_preview1){
+  //   this.last_watched.push(recipe_preview1);
+  //   localStorage.setItem("last_watched", this.last_watched);
+  //   console.log("last viewed was updated");
+
+  // },
   updateSearch(last_search1){
     localStorage.setItem("last_search", last_search1);
     //sessionStorage.setItem("last_search", last_search1);
