@@ -22,17 +22,20 @@ const routes = [
     name: "search",
     component: () => import("./pages/SearchPage"),
   },
+
+  {
+    path: "/recipe/myRecipes",
+    name: "personal",
+    component: () => import("./pages/PersonalPage"),
+  }, 
+  
   {
     path: "/recipe/:recipeId",
     name: "recipe",
     component: () => import("./pages/RecipeViewPage"),
   },
 
-  {
-    path: "/recipe/myRecipes",
-    name: "personal",
-    component: () => import("./pages/PersonalPage"),
-  },  
+ 
   
   {
     path: "/favorites",

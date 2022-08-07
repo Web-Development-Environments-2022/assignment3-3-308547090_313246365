@@ -19,54 +19,57 @@ export default {
     };
   },
   created() {
-    this.axios.get(
-      process.env.VUE_APP_ROOT_API+ "/users/myRecipes",
-    ).then(res=>{
-    this.my_recipes = res.data;
-  });
-    if(this.my_recipes.length){
-      console.log("list has length")
-      this.flag = true;
-      }
-    // this.my_recipes = 
-    // [
-    // {
-    //     "id": 640720,
-    //     "title": "Creamy Vegan Butternut Squash Mac and Cheese",
-    //     "readyInMinutes": 45,
-    //     "image": "https://spoonacular.com/recipeImages/640720-556x370.jpg",
-    //     "popularity": 40,
-    //     "vegan": false,
-    //     "vegetarian": false,
-    //     "glutenFree": false,
-    //     "isFavorite": false,
-    //     "wasWatched": false
-    // },
-    // {
-    //     "id": 640461,
-    //     "title": "Crawfish Cake Sliders",
-    //     "readyInMinutes": 45,
-    //     "image": "https://spoonacular.com/recipeImages/640461-556x370.jpg",
-    //     "popularity": 15,
-    //     "vegan": false,
-    //     "vegetarian": false,
-    //     "glutenFree": false,
-    //     "isFavorite": false,
-    //     "wasWatched": false
-    // },
-    // {
-    //     "id": 641836,
-    //     "title": "Easy Baked Parmesan Chicken",
-    //     "readyInMinutes": 45,
-    //     "image": "https://spoonacular.com/recipeImages/641836-556x370.jpg",
-    //     "popularity": 92,
-    //     "vegan": false,
-    //     "vegetarian": false,
-    //     "glutenFree": false,
-    //     "isFavorite": false,
-    //     "wasWatched": false
-    // }
-    // ]
+  //   this.axios.get(
+  //     process.env.VUE_APP_ROOT_API+ "/users/myRecipes",
+  //   ).then(res=>{
+  //   this.my_recipes = res.data;
+  // });
+  //   if(this.my_recipes.length){
+  //     console.log("list has length")
+  //     this.flag = true;
+  //     }
+    //===== test =====
+    this.my_recipes = 
+    [
+    {
+        "id": 640720,
+        "title": "Creamy Vegan Butternut Squash Mac and Cheese",
+        "readyInMinutes": 45,
+        "image": "https://spoonacular.com/recipeImages/640720-556x370.jpg",
+        "popularity": 40,
+        "vegan": false,
+        "vegetarian": false,
+        "glutenFree": false,
+        "isFavorite": false,
+        "wasWatched": false
+    },
+    {
+        "id": 640461,
+        "title": "Crawfish Cake Sliders",
+        "readyInMinutes": 45,
+        "image": "https://spoonacular.com/recipeImages/640461-556x370.jpg",
+        "popularity": 15,
+        "vegan": false,
+        "vegetarian": false,
+        "glutenFree": false,
+        "isFavorite": false,
+        "wasWatched": false
+    },
+    {
+        "id": 641836,
+        "title": "Easy Baked Parmesan Chicken",
+        "readyInMinutes": 45,
+        "image": "https://spoonacular.com/recipeImages/641836-556x370.jpg",
+        "popularity": 92,
+        "vegan": false,
+        "vegetarian": false,
+        "glutenFree": false,
+        "isFavorite": false,
+        "wasWatched": false
+    }
+    ]
+    this.flag = true;
+    //==========
   },
 };
 </script>
@@ -84,6 +87,6 @@ export default {
   margin-left: 36%;
 }
 #results_title{
-  margin-left: 42%;
+  margin-left: 36%;
 }
 </style>

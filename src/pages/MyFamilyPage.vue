@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <h1 class="title" v-if="$root.store.username" style= "font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold;" >Family Recipes:</h1>
+    <h1 class="title" v-if="$root.store.username" style= "font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold;" >Family Recipes</h1>
     <RecipePreviewList v-if= "family_recipes.length && $root.store.username" :recipes_list = "family_recipes" class="FamilyRecipes center" />
+    <h1 class="title"   v-bind= "flag" v-show= "!flag" id="results_title" style="color:rgb(25, 157, 180)">No Results &#128532;</h1>
+
   </div>
 </template>
 
@@ -13,7 +15,8 @@ export default {
   },
   data() {
     return{
-    family_recipes:[]
+    family_recipes:[],
+    flag: false
     };
   },
   created() {
@@ -22,6 +25,11 @@ export default {
     ).then(res=>{
     this.family_recipes = res.data;
   });
+
+    if( this.family_recipes.length){
+      this.flag = true;
+
+    }
   
     // this.family_recipes = 
     // [
@@ -70,11 +78,21 @@ export default {
 .FamilyRecipes {
   margin: 10px 0 10px;
 }
+// .title{
+
+//   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//   padding:30px;
+
+// }
 .title{
-
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding:30px;
-
+  font-weight: bold;
+  height: 150px;
+  align-content: center;
+  display: flex;
+  margin-left: 36%;
 }
-
+#results_title{
+   margin-left: 36%;
+}
 </style>
