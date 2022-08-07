@@ -51,8 +51,9 @@
           <b-form-group id="input-group-1" label="Name/Title of recipe:" label-for="input-1">
             <b-form-input
               id="input-1"
-              v-model="form.name"
+              v-model="$v.form.name.$model"
               type="text"
+              :state="validateState('name')"
               placeholder="Enter name/title"
               required
             ></b-form-input>
@@ -61,8 +62,9 @@
           <b-form-group id="input-group-2" label="Time to make:" label-for="input-2">
             <b-form-input
               id="input-2"
-              v-model="form.time"
+              v-model="$v.form.time.$model"
               type="number"
+              :state="validateState('time')"
               placeholder="Enter time in minutes"
               required
             ></b-form-input>
@@ -71,8 +73,9 @@
           <b-form-group id="input-group-3" label="Number of servings:" label-for="input-3">
             <b-form-input
               id="input-3"
-              v-model="form.servings"
+              v-model="$v.form.servings.$model"
               type="number"
+              :state="validateState('servings')"
               placeholder="Enter number of servings"
               required
             ></b-form-input>
@@ -82,7 +85,9 @@
             <b-form-input
               id="input-4"
               class="v-b-modal create large-text-box"
-              v-model="form.Ingredients"
+              v-model="$v.form.Ingredients.$model"
+              :state="validateState('Ingredients')"
+              type="text"
               placeholder="Enter list of Ingredients and amounts"
               required
             ></b-form-input>
@@ -92,7 +97,9 @@
             <b-form-input
               id="input-5"
               class="v-b-modal create large-text-box"
-              v-model="form.Instructions"
+              v-model="$v.form.Instructions.$model"
+              type="text"
+              :state="validateState('Instructions')"
               placeholder="Write instructions to make this recipe"
               required
             ></b-form-input>
@@ -101,8 +108,9 @@
           <b-form-group id="input-group-6" label="Image of the food:" label-for="input-6">
             <b-form-input
               id="input-6"
-              v-model="form.image"
+              v-model="$v.form.image.$model"
               type="url"
+              :state="validateState('image')"
               placeholder="Https://link_to_my_image"
               required
             ></b-form-input>
@@ -110,7 +118,7 @@
 
           <b-form-group id="input-group-7" v-slot="{ ariaDescribedby }">
             <b-form-checkbox-group
-              v-model="form.checked"
+              v-model="$v.form.checked"
               id="checkboxes-7"
               :aria-describedby="ariaDescribedby"
             >
@@ -123,6 +131,15 @@
           <b-button type="submit" variant="primary" style="margin-right: 4px;">Submit</b-button>
           <b-button type="reset" variant="danger">Reset</b-button>
         </b-form>
+        <b-alert
+          class="mt-2"
+          v-if="form.submitError"
+          variant="warning"
+          dismissible
+          show
+        >
+          Adding new recipe failed: {{ form.submitError }}
+        </b-alert>
         <!-- <b-card class="mt-3" header="Form Data Result">
           <pre class="m-0">{{ form }}</pre>
         </b-card> -->
@@ -147,6 +164,10 @@
 </template>
 
 <script>
+import {
+  required,
+} from "vuelidate/lib/validators";
+
 export default {
   name: "App",
   data() {
@@ -158,11 +179,35 @@ export default {
           Ingredients: '',
           Instructions: '',
           image: '',
-          checked: []
+          checked: [],
+          submitError: undefined
         },
-        show: true
+        show: true,
+        errors: [],
       }
     },
+  validations: {
+    form: {
+      name: {
+        required,
+      },
+      time: {
+        required
+      },
+      servings: {
+        required
+      },
+      Ingredients: {
+        required
+      },
+      Instructions: {
+        required
+      },
+      image: {
+        required
+      },
+    }
+  },
   methods: {
     Logout() {
       this.$root.store.logout();
@@ -172,11 +217,49 @@ export default {
         this.$forceUpdate();
       });
     },
-    onSubmit(event) {
-        // ToDo: add to DB and add more things to this recipe: popularity=0, IndicationViews, IndicationFavorite, Add to myRecipes page
-        event.preventDefault()
-        alert(JSON.stringify(this.form))
-      },
+    validateState(param) {
+      const { $dirty, $error } = this.$v.form[param];
+      return $dirty ? !$error : null;
+    },
+    onSubmit() {
+      this.$v.form.$touch();
+      if (this.$v.form.$anyError) {
+        return;
+      }
+      this.Submit();
+    },
+    // ToDo: add to DB and add more things to this recipe: IndicationViews, IndicationFavorite, Add to myRecipes page
+    async Submit() {
+      try {
+        const response = await this.axios.post(
+          // "https://test-for-3-2.herokuapp.com/users/recipe",
+          //this.$root.store.server_domain + "/users/recipe",
+          process.env.VUE_APP_ROOT_API + "/users/recipe",
+          
+          {
+            // username: add id of user,
+            title: this.form.name,
+            readyInMinutes: this.form.time,
+            image: this.form.image,
+            vegetarian: this.form.checked.includes("vegetarian"),
+            vegan: this.form.checked.includes("vegan"),
+            glutenFree: this.form.checked.includes("glutenFree"),
+            // vegetarian: true,
+            // vegan: true,
+            // glutenFree: true,
+            ingredients: this.form.Ingredients,
+            instructions: this.form.Instructions,
+            servings: this.form.servings,
+            
+            
+            
+          }
+        );
+      } catch (err) {
+        console.log(err.response);
+        this.form.submitError = err.response.data.message;
+      }
+    },
     onReset(event) {
       event.preventDefault()
       // Reset our form values
