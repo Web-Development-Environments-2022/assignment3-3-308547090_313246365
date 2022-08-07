@@ -29,7 +29,8 @@ export default {
   },
   data() {
     return{
-    random_recipes:[]
+    random_recipes:[],
+    last_watched: []
     };
   },
 
