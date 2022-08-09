@@ -4,6 +4,7 @@ import VueAxios from "vue-axios";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 import VueCookies from 'vue-cookies';
+Vue.use(VueCookies);
 
 import routes from "./routes";
 import VueRouter from "vue-router";

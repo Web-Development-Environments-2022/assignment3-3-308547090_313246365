@@ -1,5 +1,17 @@
 <template>
   <div>
+        
+        <!-- the photo link -->
+    
+      <!-- <b-card-img src= "recipe.image" alt="Image" top>
+      <router-link style="color: #2c3e50; text-align:center;"
+        :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
+        class="recipe-preview" 
+        >Make this!
+        </router-link>
+
+    </b-card-img>  -->
+
     <b-card id="card"
       :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
       :title="recipe.title"
@@ -10,6 +22,18 @@
       style="max-width: 20rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
       class="mb-2"
     >
+     
+    
+       <b-card-img >
+      <router-link style="color: #2c3e50; text-align:center;"
+        :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
+        class="recipe-preview" 
+        >Make this!
+        </router-link>
+
+    </b-card-img> 
+
+    <!-- ================== -->
       <b-card-text class="text">
         Likes: {{ recipe.popularity }} <br>
         Time to make in minutes: {{ recipe.readyInMinutes }}
@@ -111,7 +135,7 @@ export default {
            process.env.VUE_APP_ROOT_API+"/users/favorites",
             {
               "recipeId": this.recipe.id
-            }
+            },{withCredentials:true}
         );
            //document.getElementById("star1").style.color=yellow;
           console.log("mark as fave is good")

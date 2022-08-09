@@ -138,4 +138,13 @@ export default {
    padding-left:20px 20px 20px 20px;
   
 }
+.title{
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  height: 150px;
+  align-content: center;
+  display: flex;
+  margin-left: 36%;
+  
+}
 </style>
