@@ -11,13 +11,15 @@
           
             <div class="mb-3">
               <div>Ready in {{ recipe.readyInMinutes }} minutes</div>
-              <div>servings: {{ recipe.servings }} </div>
-               <div>Likes: {{ recipe.popularity }} likes</div>
-                <div> Is vegan: {{ recipe.vegan }} </div>
-                 <div>Is vegetarian: {{ recipe.vegetarian }} </div>
-                 <div>Is glutenFree: {{ recipe.glutenFree }} </div>
-                 <div> Is it one of my favorites: {{ recipe.isFavorite }} </div>
-                 <div> Did I watch it before:  {{ recipe.wasWatched }} </div>
+                <div>Recipe belongs to: {{ recipe.creator }} </div>
+                <div>Usually made at: {{ recipe.eating_time }} </div>
+                <div>servings: {{ recipe.servings }} </div>
+                <div>Likes: {{ recipe.popularity }} likes</div>
+                <div>Is vegan: {{ recipe.vegan }} </div>
+                <div>Is vegetarian: {{ recipe.vegetarian }} </div>
+                <div>Is glutenFree: {{ recipe.glutenFree }} </div>
+                <div> Is it one of my favorites: {{ recipe.isFavorite }} </div>
+                <div> Did I watch it before:  {{ recipe.wasWatched }} </div>
             </div>
             Ingredients:
             
@@ -30,7 +32,7 @@
           <div class="wrapped">
             <div>Instructions: 
             <pre>
-            {{ recipe.instructions }}
+            {{ recipe.instructions }};
            
             </pre>
           
@@ -39,11 +41,6 @@
           </div>
         </div>
       </div>
-      <!-- <pre>
-      {{ $route.params }}
-      {{ recipe }}
-    </pre
-      > -->
     </div>
   </div>
 </template>
@@ -67,7 +64,7 @@ export default {
         response = await this.axios.get(
           // "https://test-for-3-2.herokuapp.com/recipes/info",
           //this.$root.store.server_domain + "/recipes/info",
-          process.env.VUE_APP_ROOT_API+ "/recipes/recipe",
+          process.env.VUE_APP_ROOT_API+ "/recipes/familyRecipe",
           
           {
             params: { id: this.$route.params.recipeId }
@@ -85,6 +82,8 @@ export default {
 
       let {
         id,
+        creator,
+        eating_time,
         title,
         readyInMinutes,
         image,
@@ -92,23 +91,19 @@ export default {
         vegan,
         vegetarian,
         glutenFree,
-        servings,
         ingredients,
         instructions,
+        servings,
         isFavorite,
         wasWatched,
+        
       } = response.data;
-
-      // let _ingredients = ingredients
-      //   .map(ing => {
-      //     ing.original
-      //     return ing;
-      //   })
-       
+      response.data.instructions = removeTags(response.data.instructions);
 
       let _recipe = {
-        //_instructions,
         id,
+        creator,
+        eating_time,
         title,
         readyInMinutes,
         image,
@@ -116,19 +111,19 @@ export default {
         vegan,
         vegetarian,
         glutenFree,
-        servings,
         ingredients,
         instructions,
+        servings,
         isFavorite,
         wasWatched,
       };
 
 
-      console.log("===ingredients====")
-      console.log(_recipe.ingredients)
+    //   console.log("===ingredients====")
+    //   console.log(_recipe.ingredients)
 
-      console.log("===instructions====")
-      console.log(_recipe.instructions)
+    //   console.log("===instructions====")
+    //   console.log(_recipe.instructions)
 
 
       this.recipe = _recipe;
@@ -137,9 +132,18 @@ export default {
     }
   }
 };
+function removeTags(str) {
+    if ((str===null) || (str===''))
+        return false;
+    else
+        str = str.toString();
+          
+    // Regular expression to identify HTML tags in 
+    // the input string. Replacing the identified 
+    // HTML tag with a null string.
+    return str.replace( /(<([^>]+)>)/ig, '');
+}
 </script>
-
-
 
 
 <style scoped>

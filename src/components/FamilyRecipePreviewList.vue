@@ -3,7 +3,7 @@
     <b-row>
     <b-row v-for="r in recipes_list" :key="r.id">
       <b-col >
-        <RecipePreview class="recipePreview" :recipe="r" />
+        <RecipePreviewFamily class="recipePreview" :recipe="r" />
       </b-col>
       <br>
     </b-row>
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import RecipePreview from "./RecipePreview.vue";
+import RecipePreviewFamily from "./RecipePreviewFamily.vue";
 export default {
-  name: "RecipePreviewList",
+  name: "FamilyRecipePreviewList",
   components: {
-    RecipePreview
+    RecipePreviewFamily
   },
   props: {
     // title: {
