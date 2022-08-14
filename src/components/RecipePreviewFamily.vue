@@ -1,27 +1,14 @@
 <template>
   <div>
-        
-        <!-- the photo link -->
-    
-      <!-- <b-card-img src= "recipe.image" alt="Image" top>
-      <router-link style="color: #2c3e50; text-align:center;"
-        :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
-        class="recipe-preview" 
-        >Make this!
-        </router-link>
-
-    </b-card-img>  -->
-
     <b-card id="card"
-      :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
+      :to="{ name: 'familyRecipe', params: { recipeId: recipe.id } }"
       tag="card"
       style="max-width: 20rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
       class="mb-2"
     >
      
-      
-      <router-link style="color: #2c3e50; text-align:center;"
-        :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
+    <router-link style="color: #2c3e50; text-align:center;"
+        :to="{ name: 'familyRecipe', params: { recipeId: recipe.id } }"
         class="recipe-preview" 
         >
       <b-card-img :src="recipe.image" id="recipe_image" >
@@ -32,27 +19,35 @@
     <br>
     <br>
     <b-card-title :title="recipe.title">  </b-card-title>
+       <b-card-img >
+      <router-link style="color: #2c3e50; text-align:center;"
+        :to="{ name: 'familyRecipe', params: { recipeId: recipe.id } }"
+        class="recipe-preview" 
+        >Make this!
+        </router-link>
+
+    </b-card-img> 
 
     <!-- ================== -->
       <b-card-text class="text">
-        Likes: {{ recipe.popularity }} <br>
+        Belongs to: {{ recipe.creator }} <br>
+        When do we make it: {{ recipe.eating_time }} <br>
         Time to make in minutes: {{ recipe.readyInMinutes }}
       </b-card-text>
       <b-card-text>
         <a v-if="recipe.vegan"> 
-          <img src="../assets/vegan.png" style="width: 30px; height:30px;">
-          
-          Vegan </a>
+          <img src="../assets/vegan.png" style="width: 30px; height:30px;"> Vegan </a>
+
           <a v-if="recipe.vegetarian"> 
-            <img src="../assets/vegeterian.png" style="width: 30px; height:30px;">
-            Vegetarian </a><a v-if="recipe.glutenFree"> 
-              
-              <img src="../assets/no-wheat.png" style="width: 30px; height:30px;">
-              Gluten Free </a>
+            <img src="../assets/vegeterian.png" style="width: 30px; height:30px;"> Vegetarian </a>
+            
+            <a v-if="recipe.glutenFree">
+              <img src="../assets/no-wheat.png" style="width: 30px; height:30px;"> Gluten Free </a>
+      
       </b-card-text>
       <b-button variant="primary" style="text-align:center; background-color: #efc58b;  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;border-color:black;border:557px;">
         <router-link style="color: #2c3e50; text-align:center;"
-        :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
+        :to="{ name: 'familyRecipe', params: { recipeId: recipe.id } }"
         class="recipe-preview" 
         >Make this!
         </router-link>
@@ -134,9 +129,8 @@ export default {
    
            process.env.VUE_APP_ROOT_API+"/users/favorites",
             {
-              "recipeId": this.recipe.id,
-                
-            }
+              "recipeId": this.recipe.id
+            },{withCredentials:true}
         );
            //document.getElementById("star1").style.color=yellow;
           console.log("mark as fave is good")
