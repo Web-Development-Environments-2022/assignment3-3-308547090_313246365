@@ -1,53 +1,41 @@
 <template>
-  <div class="container" >
-     <div id="randoms">
-    <h1 id= "random_title" class="title" >Explore This Recipes:</h1>
-        <!-- <b-button  block variant="outline-primary" id=#see_more_btn @click="GetNewRandom">See more</b-button><br> -->
+  <div class="container" no-gutters>
+<b-container no-gutters>
+  <b-row no-gutters>
+  <b-col sm="5">
+       <h1 id= "random_title" class="title" style="background-color:  #f5e3c9;" >Explore This Recipes:</h1>
+     <h1 id="watched_title" class="title"  style="background-color:  #f5e3c9;" v-if="$root.store.username">Last Viewed:</h1>
 
-    <MainRecipePreviewList v-if="random_recipes.length" :recipes_list = "random_recipes" class="RandomRecipes"></MainRecipePreviewList>
-    
-    <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
-    <!-- <RecipePreviewList v-if="$root.store.username"
-      :class="{
-        RandomRecipes: true,
-        blur: !$root.store.username,
-        center: true
-      }"
-      disabled
-      > -->
-
+      <MainRecipePreviewList id="random_list" v-if="random_recipes.length" :recipes_list = "random_recipes" class="RandomRecipes"></MainRecipePreviewList>
       <button id="random_button"  @click="GetNewRandom" >See more</button>
+ </b-col>
 
-       </div>
+ <b-col>
+<!-- <b-row> -->
+      <LoginPage id="login" v-if="!$root.store.username" > </LoginPage>
+
+<!-- </b-row> -->
+ </b-col>
+
+ <b-col>
+
+    <MainRecipePreviewList   id="watched_list" v-if= "last_watched.length && $root.store.username" :recipes_list = "last_watched" class="RandomRecipes center"></MainRecipePreviewList>
+    <h1  id="no_results_title" class="title"  v-show="!last_watched.length&&$root.store.username"  style="color:rgb(25, 157, 180)">No Results &#128532;</h1>
+   
+ </b-col>
+ </b-row>
  
-
-
-     
-      <div id="watches" v-if="$root.store.username" >
-        <h1 id="watched_title" class="title"   v-if="$root.store.username">Last Viewed:</h1>
-        <MainRecipePreviewList  v-if= "random_recipes.length && $root.store.username" :recipes_list = "random_recipes" class="RandomRecipes center"></MainRecipePreviewList>
-      </div>
-
-  
-    <div>
-    <LoginPage id="login" v-if="!$root.store.username" > </LoginPage>
-  </div>
-
-
-  
-  
-      <!-- </RecipePreviewList> -->
-       
+ </b-container>
   </div>
 </template>
 
 <script>
-import MainRecipePreviewList from "../components/MainRecipePreviewList";
-import LoginPage from './LoginPage.vue';
+ import MainRecipePreviewList from "../components/MainRecipePreviewList";
+ import LoginPage from './LoginPage.vue';
 export default {
-  components: {
-    MainRecipePreviewList,
-    LoginPage
+   components: {
+     MainRecipePreviewList,
+     LoginPage
   },
   data() {
     return{
@@ -68,6 +56,17 @@ export default {
   //   this.random_recipes = res.data;
   //   console.log( this.random_recipes);
   // });
+
+    //===== AXIOS ====
+    this.axios.get(
+    //this.$root.store.server_domain + "/recipes/random",
+    process.env.VUE_APP_ROOT_API+ "/users/lastWatched",
+    // "https://test-for-3-2.herokuapp.com/recipes/random"
+  ).then(res=>{
+
+    this.last_watched = res.data;
+    console.log( this.last_watched);
+  });
 
     this.random_recipes = 
     [
@@ -109,6 +108,8 @@ export default {
     }
 ]
 
+    this.last_watched= this.random_recipes;
+    //this.last_watched=[]
    console.log( this.random_recipes);
 },
   methods: {
@@ -174,6 +175,15 @@ export default {
 //    margin: 10px 0 10px;
   
 // }
+
+.container{
+
+  
+ //background-color:  #f5e3c9;
+ //height:250%;
+
+
+}
 .blur {
   -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
   filter: blur(2px);
@@ -192,23 +202,40 @@ export default {
   height: 150px;
   align-content: center;
   display: flex;
-  margin-left: 36%;
+  //margin-left: 36%;
 
 }
 
 #watched_title{
-  margin-right:100px;
-   margin-left:60px;
-   margin-bottom: -90px;
-   margin-top:30px;
+  //margin-right:5px;
+    margin-left:750px;
+    margin-bottom: -120px;
+    margin-top:40px;
 }
 #random_title{
-  margin-left:14%;
-  margin-bottom: -100px;
+  margin-left:-500px;
+  margin-bottom: -150px;
+  //margin-top:-320px;
  
 
 }
+#random_list{
+background-color:  #f5e3c9;
+    margin-left:-500px;
+  margin-bottom: -1850px;
+  //margin-top:-400px;
+ 
+}
 
+#watched_list{
+background-color:  #f5e3c9;
+//margin-left:380px;
+margin-right:-700px;
+margin-top:-320px;
+//margin-bottom: -100px;
+//margin-bottom: -1950px;
+  
+}
 #randoms{
     margin-left:-43%;
     width: 500px;
@@ -218,22 +245,34 @@ export default {
 #watches{
 margin-left:100%;
 margin-right:-100%;
-margin-top: -198%;
+margin-top: -192%;
+margin-bottom: -120%;
 
 }
 
 
 #random_button{
-  margin-top:10px;
-  margin-left:22%;
-  height:43px;
-  width:120px;
+  //margin-top:120px;
+  height:70px;
+  width:140px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
-  font-size:20px;}
+  font-size:25px;
+  margin-left:-60px;
+  //margin-bottom: -50px;
+  
+  }
+ 
   
 #login{
-  margin-top: -1950px;
+  margin-top: -1700px;
+}
+
+#no_results_title{
+  margin-right:100px;
+   margin-left:60px;
+   margin-bottom: -90px;
+   margin-top:30px;
 }
 
 

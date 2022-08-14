@@ -3,12 +3,15 @@ import App from "./App.vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
 axios.defaults.withCredentials = true;
-import VueCookies from 'vue-cookies';
-Vue.use(VueCookies);
+
+
 
 import routes from "./routes";
 import VueRouter from "vue-router";
+import VueCookies from 'vue-cookies';
 Vue.use(VueRouter);
+Vue.use(VueCookies);
+
 const router = new VueRouter({
   routes,
 });

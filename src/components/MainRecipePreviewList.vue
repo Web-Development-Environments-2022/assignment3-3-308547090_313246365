@@ -2,9 +2,9 @@
   <b-container>
     <!-- <b-row> -->
     <b-row v-for="r in recipes_list" :key="r.id">
-      <b-col >
+      <!-- <b-col> -->
         <RecipePreview class="recipePreview" :recipe="r" />
-      </b-col>
+      <!-- </b-col> -->
       <br>
     </b-row>
     <!-- </b-row> -->
@@ -61,7 +61,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  min-height: 400px;
+  min-height: 200px;
  
  
 }

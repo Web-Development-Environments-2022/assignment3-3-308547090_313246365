@@ -14,24 +14,24 @@
 
     <b-card id="card"
       :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
-      :title="recipe.title"
-      :img-src="recipe.image"
-      img-alt="Image"
-      img-top
       tag="card"
       style="max-width: 20rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
       class="mb-2"
     >
      
-    
-       <b-card-img >
+      
       <router-link style="color: #2c3e50; text-align:center;"
         :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
         class="recipe-preview" 
-        >Make this!
-        </router-link>
+        >
+      <b-card-img :src="recipe.image" id="recipe_image" >
+      </b-card-img> 
 
-    </b-card-img> 
+      </router-link>
+    
+    <br>
+    <br>
+    <b-card-title :title="recipe.title">  </b-card-title>
 
     <!-- ================== -->
       <b-card-text class="text">
@@ -134,8 +134,9 @@ export default {
    
            process.env.VUE_APP_ROOT_API+"/users/favorites",
             {
-              "recipeId": this.recipe.id
-            },{withCredentials:true}
+              "recipeId": this.recipe.id,
+                
+            }
         );
            //document.getElementById("star1").style.color=yellow;
           console.log("mark as fave is good")
@@ -247,4 +248,13 @@ export default {
   cursor: pointer;
  
 }
+
+#recipe_image{
+  margin-left:-19px;
+  margin-top:-19px;
+  width:318px;
+}
+
+
+
 </style>

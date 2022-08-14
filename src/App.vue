@@ -290,11 +290,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   min-height: 100vh;
-  background: #f5e3c9;
+  background-color: #f5e3c9;
+  height:100%;
 }
 
 #nav {
 height:100px;
+width:100%;
+background-color: #f5e3c9;
 }
 
 #nav a {
