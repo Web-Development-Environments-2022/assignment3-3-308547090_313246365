@@ -18,8 +18,8 @@
                 <div>Is vegan: {{ recipe.vegan }} </div>
                 <div>Is vegetarian: {{ recipe.vegetarian }} </div>
                 <div>Is glutenFree: {{ recipe.glutenFree }} </div>
-                <div> Is it one of my favorites: {{ recipe.isFavorite }} </div>
-                <div> Did I watch it before:  {{ recipe.wasWatched }} </div>
+                <!-- <div> Is it one of my favorites: {{ recipe.isFavorite }} </div>
+                <div> Did I watch it before:  {{ recipe.wasWatched }} </div> -->
             </div>
             Ingredients:
             
