@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+  <div class="cont">
+    <div class= "text">
     <h1 class="title" style= "font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold;" >Welcome!</h1>
       <li class="text-block" style= "font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 25px;" >
         This site is our final project in a web course in BGU University. </li>
@@ -18,6 +19,20 @@
          <img src="../assets/bgu.jpg" style="width: 50%; height:4%;padding-right:10px;">
       
       
+    </div>  
   </div>
 </template>
+<style>
+.cont{
+    background-color:  #f5e3c9;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    
+}
+.text{
+
+  margin-left:15%;
+}
+</style>
 
