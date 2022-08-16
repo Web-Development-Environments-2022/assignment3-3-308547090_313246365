@@ -88,7 +88,7 @@
                 v-model="$v.form.Ingredients.$model"
                 :state="validateState('Ingredients')"
                 type="text"
-                placeholder="Enter list of Ingredients and amounts"
+                placeholder='Enter list of Ingredients and amounts. Example: "Onion: 4, Tomato: 2"'
                 required
               ></b-form-input>
             </b-form-group>
@@ -100,7 +100,7 @@
                 v-model="$v.form.Instructions.$model"
                 type="text"
                 :state="validateState('Instructions')"
-                placeholder="Write instructions to make this recipe"
+                placeholder="Write instructions to make this recipe as free text"
                 required
               ></b-form-input>
             </b-form-group>
@@ -118,7 +118,7 @@
 
             <b-form-group id="input-group-7" v-slot="{ ariaDescribedby }">
               <b-form-checkbox-group
-                v-model="$v.form.checked"
+                v-model="checked"
                 id="checkboxes-7"
                 :aria-describedby="ariaDescribedby"
               >
@@ -173,6 +173,7 @@ export default {
 
   data() {
       return {
+        checked: [],
         form: {
           name: '',
           time: '',
@@ -180,7 +181,6 @@ export default {
           Ingredients: '',
           Instructions: '',
           image: '',
-          checked: [],
           submitError: undefined
         },
         show: true,
