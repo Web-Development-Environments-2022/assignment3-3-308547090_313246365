@@ -39,13 +39,13 @@
         Time to make in minutes: {{ recipe.readyInMinutes }}
       </b-card-text>
       <b-card-text>
-        <a v-if="recipe.vegan"> 
+        <a v-if=recipe.vegan> 
           <img src="../assets/vegan.png" style="width: 30px; height:30px;">
           
           Vegan </a>
-          <a v-if="recipe.vegetarian"> 
+          <a v-if=recipe.vegetarian> 
             <img src="../assets/vegeterian.png" style="width: 30px; height:30px;">
-            Vegetarian </a><a v-if="recipe.glutenFree"> 
+            Vegetarian </a><a v-if= recipe.glutenFree> 
               
               <img src="../assets/no-wheat.png" style="width: 30px; height:30px;">
               Gluten Free </a>
@@ -60,7 +60,8 @@
       <b-row>
       <div  id="star1" class= "star"   v-show= !(recipe.isFavorite&flag) @click="MarkAsFavourite" style="font-size:300%;color:grey; margin-left:242px;hover:">&starf;</div>
       <div id="star2" class= "star"  v-show= (recipe.isFavorite||flag) style="font-size:300%;color:orange; margin-left:242px;hover:">&starf;</div>
-
+        <img   v-if=recipe.wasWatched src="../assets/visibility2.jpg" style="width: 45px; height:30px;">
+        <img v-if=!recipe.wasWatched src="../assets/notvisibility.png" style="width: 60px; height:60px;">
        </b-row>
 
        
@@ -117,16 +118,14 @@ export default {
 
 
     async MarkAsFavourite(){
-        console.log("=== flag is true 0 =====");
+    
       //== send response ==
       try {
       
       //====== &  =====
       //if recipe is not in user favourites and he is logged in -> mark as favorite 
-      //if(this.recipe.isFavorite==false & $root.store.username.length){
+      //if(this.recipe.isFavorite==='false' & $root.store.username.length){
         this.flag=true;
-        console.log("=== flag is true 1 =====");
-        console.log(this.recipe.id);
 
       //}
            
@@ -136,10 +135,10 @@ export default {
             {
               "recipeId": this.recipe.id,
                 
-            }
+            } 
         );
            //document.getElementById("star1").style.color=yellow;
-          console.log("mark as fave is good")
+          console.log("mark as fave is good include axios ")
           console.log(response.data);
 
          
