@@ -30,14 +30,14 @@
             
           </div>
           <div class="wrapped">
-            <div>Instructions: 
-            <pre>
-            {{ recipe.instructions }};
-           
-            </pre>
-          
+            <div>
+            Instructions:
+            <br>
+            <div style="text-overflow:ellipsis;" >
+            {{recipe.instructions }};
+      
             </div>
-         
+          </div>
           </div>
         </div>
       </div>

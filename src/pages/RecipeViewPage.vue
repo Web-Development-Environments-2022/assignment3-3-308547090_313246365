@@ -28,11 +28,14 @@
             
           </div>
           <div class="wrapped">
-            <div>Instructions: 
-            <pre>
+            Instructions:
+            <br>
+            <div style="text-overflow:ellipsis;" > 
+            <!-- <pre style="text-overflow:ellipsis;"> -->
+            
             {{ recipe.instructions }}
            
-            </pre>
+            <!-- </pre> -->
           
             </div>
          
@@ -55,6 +58,9 @@ export default {
       recipe: null
     };
   },
+
+
+
   async created() {
     try {
       let response;
@@ -99,6 +105,8 @@ export default {
         wasWatched,
       } = response.data;
 
+      response.data.instructions = removeTags(response.data.instructions);
+
       // let _ingredients = ingredients
       //   .map(ing => {
       //     ing.original
@@ -130,13 +138,26 @@ export default {
       console.log("===instructions====")
       console.log(_recipe.instructions)
 
-
+      
       this.recipe = _recipe;
     } catch (error) {
       console.log(error);
     }
   }
 };
+
+
+  function removeTags(str) {
+      if ((str===null) || (str===''))
+          return false;
+      else
+          str = str.toString();
+            
+      // Regular expression to identify HTML tags in 
+      // the input string. Replacing the identified 
+      // HTML tag with a null string.
+      return str.replace( /(<([^>]+)>)/ig, '');
+  }
 </script>
 
 

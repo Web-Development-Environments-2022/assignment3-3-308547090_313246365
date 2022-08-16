@@ -1,31 +1,28 @@
 <template>
-  <div class="container" no-gutters>
-<b-container no-gutters>
-  <b-row no-gutters>
-  <b-col sm="5">
-       <h1 id= "random_title" class="title" style="background-color:  #f5e3c9;" >Explore This Recipes:</h1>
-     <h1 id="watched_title" class="title"  style="background-color:  #f5e3c9;" v-if="$root.store.username">Last Viewed:</h1>
+  <div  >
 
+  <b-row id="row1" >
+  <b-col sm="5">
+       <h1 id= "random_title" class="title_main" style="background-color:  #f5e3c9;" >Explore This Recipes:</h1> 
       <MainRecipePreviewList id="random_list" v-if="random_recipes.length" :recipes_list = "random_recipes" class="RandomRecipes"></MainRecipePreviewList>
       <button id="random_button"  @click="GetNewRandom" >See more</button>
  </b-col>
 
  <b-col>
-<!-- <b-row> -->
+
       <LoginPage id="login" v-if="!$root.store.username" > </LoginPage>
 
-<!-- </b-row> -->
  </b-col>
 
  <b-col>
-
+     <h1 id="watched_title" class="title_main"  style="background-color:  #f5e3c9;" v-if="$root.store.username">Last Viewed:</h1>
     <MainRecipePreviewList   id="watched_list" v-if= "last_watched.length && $root.store.username" :recipes_list = "last_watched" class="RandomRecipes center"></MainRecipePreviewList>
     <h1  id="no_results_title" class="title"  v-show="!last_watched.length&&$root.store.username"  style="color:rgb(25, 157, 180)">No Results &#128532;</h1>
    
  </b-col>
  </b-row>
  
- </b-container>
+
   </div>
 </template>
 
@@ -171,102 +168,113 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#row1{
+  display: flex;
+  background-color:  #f5e3c9;
+}
 // .RandomRecipes {
 //    margin: 10px 0 10px;
   
 // }
 
-.container{
+// .container{
 
   
- //background-color:  #f5e3c9;
- //height:250%;
+//  //background-color:  #f5e3c9;
+//  //height:250%;
 
 
-}
-.blur {
-  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
-  filter: blur(2px);
-}
-::v-deep .blur .recipe-preview {
-  pointer-events: none;
-  cursor: default;
+// }
+// .blur {
+//   -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+//   filter: blur(2px);
+// }
+// ::v-deep .blur .recipe-preview {
+//   pointer-events: none;
+//   cursor: default;
 
-}
+// }
 
 
-.title{
+// .title{
 
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+//   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+//   font-weight: bold;
+//   height: 150px;
+//   align-content: center;
+//   display: flex;
+//   //margin-left: 36%;
+
+// }
+
+ #watched_title{
+  // margin-right:-100px;
+    margin-left:100px;
+    //margin-left:25%;
+    //margin-bottom: -120px;
+    margin-top:20px;
+
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
-  height: 150px;
-  align-content: center;
-  display: flex;
-  //margin-left: 36%;
-
-}
-
-#watched_title{
-  //margin-right:5px;
-    margin-left:750px;
-    margin-bottom: -120px;
-    margin-top:40px;
+  font-size: 30px;
 }
 #random_title{
-  margin-left:-500px;
-  margin-bottom: -150px;
-  //margin-top:-320px;
- 
+  margin-left:6%;
+  //margin-bottom: -150px;
+  margin-top:20px;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 30px;
 
-}
-#random_list{
-background-color:  #f5e3c9;
-    margin-left:-500px;
-  margin-bottom: -1850px;
-  //margin-top:-400px;
+ }
+// #random_list{
+// background-color:  #f5e3c9;
+//     margin-left:-500px;
+//   margin-bottom: -1850px;
+//   //margin-top:-400px;
  
-}
+// }
 
-#watched_list{
-background-color:  #f5e3c9;
-//margin-left:380px;
-margin-right:-700px;
-margin-top:-320px;
-//margin-bottom: -100px;
-//margin-bottom: -1950px;
+// #watched_list{
+// background-color:  #f5e3c9;
+// //margin-left:380px;
+// margin-right:-700px;
+// margin-top:-320px;
+// //margin-bottom: -100px;
+// //margin-bottom: -1950px;
   
-}
-#randoms{
-    margin-left:-43%;
-    width: 500px;
+// }
+// #randoms{
+//     margin-left:-43%;
+//     width: 500px;
 
-}
+// }
 
-#watches{
-margin-left:100%;
-margin-right:-100%;
-margin-top: -192%;
-margin-bottom: -120%;
+// #watches{
+// margin-left:100%;
+// margin-right:-100%;
+// margin-top: -192%;
+// margin-bottom: -120%;
 
-}
+// }
 
 
 #random_button{
-  //margin-top:120px;
+  margin-top:10px;
   height:70px;
   width:140px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   font-size:25px;
-  margin-left:-60px;
+  margin-left:13%;
   //margin-bottom: -50px;
   
   }
  
   
-#login{
-  margin-top: -1700px;
-}
+// #login{
+//   margin-top: -1700px;
+// }
 
 #no_results_title{
   margin-right:100px;

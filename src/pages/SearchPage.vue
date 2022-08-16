@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <h1 class="title" >Search Recipes</h1>
+  <div class="cont">
+    <h1 class="title1" >Search Recipes</h1>
     <div
       class="btn-group"
       role="group"
@@ -111,8 +111,8 @@
   <br>
   <br>
  
-    <h1 class="title"  v-show="!flag" id="results_title">Results</h1>
-     <div style="margin-left:30%">
+    <h1 class="title1"  v-show="!flag" >Results</h1>
+     <div>
     <div class="form-check form-check-inline" v-show="search_results.length">
   <input class="form-check-input" @change="sortByTime" type="checkbox" id="inlineCheckbox1" value="option1" />
   <label class="form-check-label" for="inlineCheckbox1"> Sort by preperation time</label>
@@ -3352,23 +3352,27 @@ export default {
 ;
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
-<style>
+<style >
+.cont{
+    background-color:  #f5e3c9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .btn-group {
   display: flex;
   flex-direction: column;
 }
-.title {
+.title1 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   height: 150px;
-  align-content: center;
-  display: flex;
-  margin-left: 36%;
+  /* align-content: center; */
+  /* display: flex; */
+  /* margin-left: 20%; */
+    /* align-items: center; */
 }
 
-#results_title{
-  margin-left: 42%;
-}
 
 
 .e-checkbox-wrapper {
