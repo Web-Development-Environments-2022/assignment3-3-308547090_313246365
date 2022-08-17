@@ -242,18 +242,15 @@ export default {
             title: this.form.name,
             readyInMinutes: this.form.time,
             image: this.form.image,
-            vegetarian: this.form.checked.includes("vegetarian"),
-            vegan: this.form.checked.includes("vegan"),
-            glutenFree: this.form.checked.includes("glutenFree"),
-            // vegetarian: true,
-            // vegan: true,
-            // glutenFree: true,
+            vegan: this.checked.includes("vegan").toString(),
+            vegetarian: this.checked.includes("vegetarian").toString(),
+            glutenFree: this.checked.includes("glutenFree").toString(),
+            // vegan: "true",
+            // vegetarian: "true",
+            // glutenFree: "true",
             ingredients: this.form.Ingredients,
             instructions: this.form.Instructions,
             servings: this.form.servings,
-            
-            
-            
           }
         );
       } catch (err) {

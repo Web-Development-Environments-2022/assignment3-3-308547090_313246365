@@ -19,36 +19,36 @@ export default {
     };
   },
   created() {
-  //   this.axios.get(
-  //     process.env.VUE_APP_ROOT_API+ "/users/familyRecipes",
-  //   ).then(res=>{
-  //   this.family_recipes = res.data;
-  // });
+    this.axios.get(
+      process.env.VUE_APP_ROOT_API+ "/users/familyRecipes",
+    ).then(res=>{
+    this.family_recipes = res.data;
+  });
 
-  //   if( this.family_recipes.length){
-  //     this.flag = true;
+    if( this.family_recipes.length){
+      this.flag = true;
 
-  //   }
+    }
   
-    this.family_recipes = 
-    [
-    {
-        "id": 1,
-        "user_id": 1,
-        "creator": "Zoor Faamily",
-        "eating_time": "Every day",
-        "title": "Olive Pie",
-        "readyInMinutes": 40,
-        "image": "https://i.pinimg.com/originals/f6/cd/3b/f6cd3b049e1e3c337d8a142605d0816c.jpg",
-        "popularity": 10,
-        "vegan": "false",
-        "vegetarian": "true",
-        "glutenFree": "false",
-        "ingridients": "olives: 1 cup ,eggs:3 ,yellow cheese:4 slices, wheat flour:1 cup, oil:half cup",
-        "instructions": "mix it all and to the oven",
-        "servings": 6
-    },
-    ]
+    // this.family_recipes = 
+    // [
+    // {
+    //     "id": 1,
+    //     "user_id": 1,
+    //     "creator": "Zoor Faamily",
+    //     "eating_time": "Every day",
+    //     "title": "Olive Pie",
+    //     "readyInMinutes": 40,
+    //     "image": "https://i.pinimg.com/originals/f6/cd/3b/f6cd3b049e1e3c337d8a142605d0816c.jpg",
+    //     "popularity": 10,
+    //     "vegan": "false",
+    //     "vegetarian": "true",
+    //     "glutenFree": "false",
+    //     "ingridients": "olives: 1 cup ,eggs:3 ,yellow cheese:4 slices, wheat flour:1 cup, oil:half cup",
+    //     "instructions": "mix it all and to the oven",
+    //     "servings": 6
+    // },
+    // ]
   },
 };
 </script>

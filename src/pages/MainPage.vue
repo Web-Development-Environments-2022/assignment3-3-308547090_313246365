@@ -17,7 +17,7 @@
  <b-col>
      <h1 id="watched_title" class="title_main"  style="background-color:  #f5e3c9;" v-if="$root.store.username">Last Viewed:</h1>
     <MainRecipePreviewList   id="watched_list" v-if= "last_watched.length && $root.store.username" :recipes_list = "last_watched" class="RandomRecipes center"></MainRecipePreviewList>
-    <h1  id="no_results_title" class="title"  v-show="!last_watched.length&&$root.store.username"  style="color:rgb(25, 157, 180)">No Results &#128532;</h1>
+    <h1  id="no_results_title" class="title"  v-if="!last_watched.length&&$root.store.username"  style="color:rgb(25, 157, 180)">No Results &#128532;</h1>
    
  </b-col>
  </b-row>
@@ -40,21 +40,8 @@ export default {
     last_watched: []
     };
   },
-
-  created() {
-
-  //===== AXIOS ====
-  //   this.axios.get(
-  //   //this.$root.store.server_domain + "/recipes/random",
-  //   process.env.VUE_APP_ROOT_API+ "/recipes/random",
-  //   // "https://test-for-3-2.herokuapp.com/recipes/random"
-  // ).then(res=>{
-
-  //   this.random_recipes = res.data;
-  //   console.log( this.random_recipes);
-  // });
-
-    //===== AXIOS ====
+  mounted(){
+    // ===== AXIOS ====
     this.axios.get(
     //this.$root.store.server_domain + "/recipes/random",
     process.env.VUE_APP_ROOT_API+ "/users/lastWatched",
@@ -62,105 +49,125 @@ export default {
   ).then(res=>{
 
     this.last_watched = res.data;
-    console.log( this.last_watched);
+  });
+  },
+  created() {
+  //===== AXIOS ====
+    this.axios.get(
+    //this.$root.store.server_domain + "/recipes/random",
+    process.env.VUE_APP_ROOT_API+ "/recipes/random",
+    // "https://test-for-3-2.herokuapp.com/recipes/random"
+  ).then(res=>{
+
+    this.random_recipes = res.data;
+    console.log( this.random_recipes);
   });
 
-    this.random_recipes = 
-    [
-    {
-        "id": 664025,
-        "title": "Turkey Enchilada Bake",
-        "readyInMinutes": 45,
-        "image": "https://spoonacular.com/recipeImages/661121-556x370.jpg",
-        "popularity": 31,
-        "vegan": false,
-        "vegetarian": false,
-        "glutenFree": true,
-        "isFavorite": false,
-        "wasWatched": false
-    },
-    {
-        "id": 648348,
-        "title": "Jalapeno Cornbread Stuffing",
-        "readyInMinutes": 45,
-        "image": "https://spoonacular.com/recipeImages/648348-556x370.jpg",
-        "popularity": 9,
-        "vegan": false,
-        "vegetarian": true,
-        "glutenFree": false,
-        "isFavorite": false,
-        "wasWatched": false
-    },
-    {
-        "id": 661121,
-        "title": "Spicy Lemongrass Soup",
-        "readyInMinutes": 45,
-        "image": "https://spoonacular.com/recipeImages/661121-556x370.jpg",
-        "popularity": 13,
-        "vegan": true,
-        "vegetarian": true,
-        "glutenFree": false,
-        "isFavorite": false,
-        "wasWatched": false
-    }
-]
+    // ===== AXIOS ====
+    this.axios.get(
+    //this.$root.store.server_domain + "/recipes/random",
+    process.env.VUE_APP_ROOT_API+ "/users/lastWatched",
+    // "https://test-for-3-2.herokuapp.com/recipes/random"
+  ).then(res=>{
 
-    this.last_watched= this.random_recipes;
+    this.last_watched = res.data;
+  });
+
+//     this.random_recipes = 
+//     [
+//     {
+//         "id": 664025,
+//         "title": "Turkey Enchilada Bake",
+//         "readyInMinutes": 45,
+//         "image": "https://spoonacular.com/recipeImages/661121-556x370.jpg",
+//         "popularity": 31,
+//         "vegan": false,
+//         "vegetarian": false,
+//         "glutenFree": true,
+//         "isFavorite": false,
+//         "wasWatched": false
+//     },
+//     {
+//         "id": 648348,
+//         "title": "Jalapeno Cornbread Stuffing",
+//         "readyInMinutes": 45,
+//         "image": "https://spoonacular.com/recipeImages/648348-556x370.jpg",
+//         "popularity": 9,
+//         "vegan": false,
+//         "vegetarian": true,
+//         "glutenFree": false,
+//         "isFavorite": false,
+//         "wasWatched": false
+//     },
+//     {
+//         "id": 661121,
+//         "title": "Spicy Lemongrass Soup",
+//         "readyInMinutes": 45,
+//         "image": "https://spoonacular.com/recipeImages/661121-556x370.jpg",
+//         "popularity": 13,
+//         "vegan": true,
+//         "vegetarian": true,
+//         "glutenFree": false,
+//         "isFavorite": false,
+//         "wasWatched": false
+//     }
+// ]
+
+    // this.last_watched= this.random_recipes;
     //this.last_watched=[]
-   console.log( this.random_recipes);
 },
   methods: {
     GetNewRandom(){
       //===== AXIOS ====
-  //   this.axios.get(
+    this.axios.get(
   //   //this.$root.store.server_domain + "/recipes/random",
-  //   process.env.VUE_APP_ROOT_API+ "/recipes/random",
+    process.env.VUE_APP_ROOT_API+ "/recipes/random",
   //   // "https://test-for-3-2.herokuapp.com/recipes/random"
-  // ).then(res=>{
+  ).then(res=>{
 
-  //   this.random_recipes = res.data;
+    this.random_recipes = res.data;
   //   console.log( this.random_recipes);
-  // });
+  });
 
-    this.random_recipes = 
-    [
-    {
-        "id": 648348,
-        "title": "Jalapeno Cornbread Stuffing",
-        "readyInMinutes": 45,
-        "image": "https://spoonacular.com/recipeImages/648348-556x370.jpg",
-        "popularity": 9,
-        "vegan": false,
-        "vegetarian": true,
-        "glutenFree": false,
-        "isFavorite": false,
-        "wasWatched": false
-    },
-    {
-        "id": 648348,
-        "title": "Jalapeno Cornbread Stuffing",
-        "readyInMinutes": 45,
-        "image": "https://spoonacular.com/recipeImages/648348-556x370.jpg",
-        "popularity": 9,
-        "vegan": false,
-        "vegetarian": true,
-        "glutenFree": false,
-        "isFavorite": false,
-        "wasWatched": false
-    },
-    {
-        "id": 661121,
-        "title": "Spicy Lemongrass Soup",
-        "readyInMinutes": 45,
-        "image": "https://spoonacular.com/recipeImages/661121-556x370.jpg",
-        "popularity": 13,
-        "vegan": true,
-        "vegetarian": true,
-        "glutenFree": false,
-        "isFavorite": false,
-        "wasWatched": false
-    }
-]
+//     this.random_recipes = 
+//     [
+//     {
+//         "id": 648348,
+//         "title": "Jalapeno Cornbread Stuffing",
+//         "readyInMinutes": 45,
+//         "image": "https://spoonacular.com/recipeImages/648348-556x370.jpg",
+//         "popularity": 9,
+//         "vegan": false,
+//         "vegetarian": true,
+//         "glutenFree": false,
+//         "isFavorite": false,
+//         "wasWatched": false
+//     },
+//     {
+//         "id": 648348,
+//         "title": "Jalapeno Cornbread Stuffing",
+//         "readyInMinutes": 45,
+//         "image": "https://spoonacular.com/recipeImages/648348-556x370.jpg",
+//         "popularity": 9,
+//         "vegan": false,
+//         "vegetarian": true,
+//         "glutenFree": false,
+//         "isFavorite": false,
+//         "wasWatched": false
+//     },
+//     {
+//         "id": 661121,
+//         "title": "Spicy Lemongrass Soup",
+//         "readyInMinutes": 45,
+//         "image": "https://spoonacular.com/recipeImages/661121-556x370.jpg",
+//         "popularity": 13,
+//         "vegan": true,
+//         "vegetarian": true,
+//         "glutenFree": false,
+//         "isFavorite": false,
+//         "wasWatched": false
+//     }
+// ]
     }
   },
 };

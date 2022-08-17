@@ -38,13 +38,13 @@ const routes = [
   },
 
   {
-    path: "/recipe/myRecipes/:recipeId",
+    path: "/myRecipes/:recipeId",
     name: "personalpage",
     component: () => import("./pages/PersonalViewPage"),
   }, 
   
   {
-    path: "/recipe/myRecipes",
+    path: "/myRecipes",
     name: "personal",
     component: () => import("./pages/PersonalPage"),
   }, 

@@ -36,16 +36,16 @@ export default {
   // methods: {
   //   async updateRecipes() {
   //     try {
-  //       // const response = await this.axios.get(
+  //       const response = await this.axios.get(
   //       //   //this.$root.store.server_domain + "/recipes/random",
-  //       //   process.env.VUE_APP_ROOT_API+ "/recipes/random",
+  //         process.env.VUE_APP_ROOT_API+ "/recipes/random",
   //       //   // "https://test-for-3-2.herokuapp.com/recipes/random"
-  //       // );
+  //       );
 
   //       // // console.log(response);
-  //       // const recipes = response.data;
-  //       // this.recipes = [];
-  //       // this.recipes.push(...recipes);
+  //       const recipes = response.data;
+  //       this.recipes = [];
+  //       this.recipes.push(...recipes);
 
   //       this.recipes= this.recipes_list;
   //       console.log(this.recipes);

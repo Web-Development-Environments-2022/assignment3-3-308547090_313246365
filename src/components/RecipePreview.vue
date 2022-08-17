@@ -58,7 +58,7 @@
         </router-link>
       </b-button>
       <b-row>
-      <div  id="star1" class= "star"   v-show= !(recipe.isFavorite&flag) @click="MarkAsFavourite" style="font-size:300%;color:grey; margin-left:242px;hover:">&starf;</div>
+      <div  id="star1" class= "star" v-show= (!recipe.isFavorite&!flag) @click="MarkAsFavourite" style="font-size:300%;color:grey; margin-left:242px;hover:">&starf;</div>
       <div id="star2" class= "star"  v-show= (recipe.isFavorite||flag) style="font-size:300%;color:orange; margin-left:242px;hover:">&starf;</div>
         <img   v-if=recipe.wasWatched src="../assets/visibility2.jpg" style="width: 45px; height:30px;">
         <img v-if=!recipe.wasWatched src="../assets/notvisibility.png" style="width: 60px; height:60px;">
@@ -124,16 +124,16 @@ export default {
       
       //====== &  =====
       //if recipe is not in user favourites and he is logged in -> mark as favorite 
-      //if(this.recipe.isFavorite==='false' & $root.store.username.length){
-        this.flag=true;
+      console.log(this.recipe.isFavorite)
+      console.log(this.flag)
+      // if(this.recipe.isFavorite.localeCompare("false") == 0){
+        this.flag= true;
 
-      //}
-           
+      // }
         const response = await this.axios.post(
-   
            process.env.VUE_APP_ROOT_API+"/users/favorites",
             {
-              "recipeId": this.recipe.id,
+              recipeId: this.recipe.id,
                 
             } 
         );
