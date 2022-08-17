@@ -55,6 +55,7 @@
       <b-row>
       <div  id="star1" class= "star"   v-show= !(recipe.isFavorite&flag) @click="MarkAsFavourite" style="font-size:300%;color:grey; margin-left:242px;hover:">&starf;</div>
       <div id="star2" class= "star"  v-show= (recipe.isFavorite||flag) style="font-size:300%;color:orange; margin-left:242px;hover:">&starf;</div>
+      <img src="../assets/notvisibility.png" style="width: 60px; height:60px;">
 
        </b-row>
 

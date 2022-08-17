@@ -13,9 +13,15 @@
               <div>Ready in {{ recipe.readyInMinutes }} minutes</div>
               <div>servings: {{ recipe.servings }} </div>
                <div>Likes: {{ recipe.popularity }} likes</div>
-                <div> Is vegan: {{ recipe.vegan }} </div>
-                 <div>Is vegetarian: {{ recipe.vegetarian }} </div>
-                 <div>Is glutenFree: {{ recipe.glutenFree }} </div>
+                <div> Is vegan: <img v-if=recipe.vegan src="../assets/vegan.png" style="width: 30px; height:30px;">
+                <a v-if=!recipe.vegan>X</a>
+                </div>
+                 <div> Is vegetarian: <img v-if=recipe.vegetarian src="../assets/vegeterian.png" style="width: 30px; height:30px;">
+                <a v-if=!recipe.vegetarian>X</a>
+                  </div>
+                 <div>Is glutenFree: <img v-if=recipe.glutenFree src="../assets/no-wheat.png" style="width: 30px; height:30px;">
+                <a v-if=!recipe.glutenFree>X</a>
+                </div>
                  <div> Is it one of my favorites: {{ recipe.isFavorite }} </div>
                  <div> Did I watch it before:  {{ recipe.wasWatched }} </div>
             </div>

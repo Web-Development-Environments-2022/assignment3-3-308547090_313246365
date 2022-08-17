@@ -17,7 +17,7 @@
  <b-col>
      <h1 id="watched_title" class="title_main"  style="background-color:  #f5e3c9;" v-if="$root.store.username">Last Viewed:</h1>
     <MainRecipePreviewList   id="watched_list" v-if= "last_watched.length && $root.store.username" :recipes_list = "last_watched" class="RandomRecipes center"></MainRecipePreviewList>
-    <h1  id="no_results_title" class="title"  v-if="!last_watched.length&&$root.store.username"  style="color:rgb(25, 157, 180)">No Results &#128532;</h1>
+    <h1  id="no_results_title" class="title"  v-if="isloaded&&!last_watched.length&&$root.store.username"  style="color:rgb(25, 157, 180)">No Results &#128532;</h1>
    
  </b-col>
  </b-row>
@@ -37,7 +37,8 @@ export default {
   data() {
     return{
     random_recipes:[],
-    last_watched: []
+    last_watched: [],
+    isloaded: false,
     };
   },
   mounted(){
@@ -72,7 +73,7 @@ export default {
 
     this.last_watched = res.data;
   });
-
+  this.isloaded = true;
 //     this.random_recipes = 
 //     [
 //     {

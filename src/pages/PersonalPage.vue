@@ -20,7 +20,7 @@ export default {
     flag: false
     };
   },
-  created() {
+  mounted() {
     this.axios.get(
       process.env.VUE_APP_ROOT_API+ "/users/myRecipes",
     ).then(res=>{
@@ -49,7 +49,6 @@ export default {
     // "isFavorite": false,
     // "wasWatched": false
     // },
-    this.flag = true;
     //==========
   },
 };

@@ -39,16 +39,18 @@
         Time to make in minutes: {{ recipe.readyInMinutes }}
       </b-card-text>
       <b-card-text>
-        <a v-if=recipe.vegan> 
-          <img src="../assets/vegan.png" style="width: 30px; height:30px;">
-          
-          Vegan </a>
-          <a v-if=recipe.vegetarian> 
-            <img src="../assets/vegeterian.png" style="width: 30px; height:30px;">
-            Vegetarian </a><a v-if= recipe.glutenFree> 
-              
-              <img src="../assets/no-wheat.png" style="width: 30px; height:30px;">
-              Gluten Free </a>
+        <a v-if="recipe.vegan"> 
+        <img src="../assets/vegan.png" style="width: 30px; height:30px;">
+        Vegan 
+        </a>
+        <a v-if="recipe.vegetarian"> 
+        <img src="../assets/vegeterian.png" style="width: 30px; height:30px;">
+        Vegetarian 
+        </a>
+        <a v-if= "recipe.glutenFree"> 
+        <img src="../assets/no-wheat.png" style="width: 30px; height:30px;">
+        Gluten Free 
+        </a>
       </b-card-text>
       <b-button variant="primary" style="text-align:center; background-color: #efc58b;  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;border-color:black;border:557px;">
         <router-link style="color: #2c3e50; text-align:center;"

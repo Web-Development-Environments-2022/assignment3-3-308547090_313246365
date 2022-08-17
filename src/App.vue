@@ -116,16 +116,40 @@
               ></b-form-input>
             </b-form-group>
 
-            <b-form-group id="input-group-7" v-slot="{ ariaDescribedby }">
-              <b-form-checkbox-group
+            <b-form-group id="input-group-7">
+              <b-form-checkbox
+                id="checkbox-vegan"
+                v-model="vegan"
+                name="checkbox-vegan"
+                value=1
+                unchecked-value=0
+              >Vegan
+              </b-form-checkbox>
+              <b-form-checkbox
+                id="checkbox-vegetarian"
+                v-model="vegetarian"
+                name="checkbox-vegetarian"
+                value=1
+                unchecked-value=0
+              >Vegetarian
+              </b-form-checkbox>
+              <b-form-checkbox
+                id="checkbox-glutenFree"
+                v-model="glutenFree"
+                name="checkbox-glutenFree"
+                value=1
+                unchecked-value=0
+              >GlutenFree
+              </b-form-checkbox>
+              <!-- <b-form-checkbox-group
                 v-model="checked"
                 id="checkboxes-7"
                 :aria-describedby="ariaDescribedby"
               >
-                <b-form-checkbox value="Vegetarian">Vegetarian</b-form-checkbox>
-                <b-form-checkbox value="Vegan">Vegan</b-form-checkbox>
-                <b-form-checkbox value="GlutenFree">Gluten Free</b-form-checkbox>
-              </b-form-checkbox-group>
+                <b-form-checkbox value=1>Vegetarian</b-form-checkbox>
+                <b-form-checkbox value=1>Vegan</b-form-checkbox>
+                <b-form-checkbox value=1>Gluten Free</b-form-checkbox>
+              </b-form-checkbox-group> -->
             </b-form-group>
 
             <b-button type="submit" variant="primary" style="margin-right: 4px;">Submit</b-button>
@@ -173,7 +197,10 @@ export default {
 
   data() {
       return {
-        checked: [],
+        vegan: 0,
+        vegetarian: 0,
+        glutenFree: 0,
+        // checked: [],
         form: {
           name: '',
           time: '',
@@ -242,12 +269,12 @@ export default {
             title: this.form.name,
             readyInMinutes: this.form.time,
             image: this.form.image,
-            vegan: this.checked.includes("vegan").toString(),
-            vegetarian: this.checked.includes("vegetarian").toString(),
-            glutenFree: this.checked.includes("glutenFree").toString(),
-            // vegan: "true",
-            // vegetarian: "true",
-            // glutenFree: "true",
+            // vegan: this.checked.includes("Vegan"),
+            // vegetarian: this.checked.includes("Vegetarian"),
+            // glutenFree: this.checked.includes("GlutenFree"),
+            vegan: this.vegan,
+            vegetarian: this.vegetarian,
+            glutenFree: this.glutenFree,
             ingredients: this.form.Ingredients,
             instructions: this.form.Instructions,
             servings: this.form.servings,

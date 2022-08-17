@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="title" v-if="$root.store.username" style= "font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold;" >Family Recipes</h1>
     <FamilyRecipePreviewList v-if= "family_recipes.length && $root.store.username" :recipes_list = "family_recipes" class="FamilyRecipes center" />
-    <h1 class="title" v-bind= "flag" v-show= "flag" id="results_title" style="color:rgb(25, 157, 180)">There are no family recipes &#128532;</h1>
+    <h1 class="title" v-bind= "flag" v-show= "!flag" id="results_title" style="color:rgb(25, 157, 180)">There are no family recipes &#128532;</h1>
   </div>
 </template>
 
